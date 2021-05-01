@@ -140,7 +140,7 @@ def save_model(pipeline, model_filepath):
         pickle_filepath -> destination path to save .pkl file
     
     """
-    pickle.dump(pipeline, open(model_filepath, 'wb'))    
+    pickle.dump(model.best_estimator_, open(model_filepath, 'wb'))  
     
     
 def main():
