@@ -1,4 +1,4 @@
-# disaster-response-pipeline-udacity
+# Classify messages sent as a part of disaster response
 Repository containing code for a pipeline that classifies messages sent during a disaster response
 
 ## Installation
@@ -33,4 +33,6 @@ From the current working directory, run the following command: python models/tra
 Save the app folder in the current working directory.
 Run the following command in the app directory: python run.py
 Go to http://0.0.0.0:3001/
+
+### Screenshots
 
