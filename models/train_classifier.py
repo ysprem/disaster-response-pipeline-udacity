@@ -121,8 +121,6 @@ def evaluate_model(model, X_test, Y_test, category_names):
     None
     """
     # Predict labels for test dataset
-    Y_pred = model.predict(X_test)
-
     Y_prediction_test = model.predict(X_test)
 
     print(classification_report(Y_test.values, Y_prediction_test, target_names=Y_test.columns.values))
