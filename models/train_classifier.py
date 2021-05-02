@@ -4,6 +4,8 @@ from sqlalchemy import create_engine
 import re
 import pickle
 import nltk
+import sys
+import os
 
 # import relevant functions/modules from the nltk
 
@@ -23,8 +25,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, make_scorer
 from sklearn.model_selection import GridSearchCV
-from sklearn.svm import SVC
-
 
 def load_data(database_filepath):
     """
@@ -45,8 +45,6 @@ def load_data(database_filepath):
     X = df['message']
     Y = df.iloc[:,4:]
     
-    #print(X)
-    #print(y.columns)
     category_names = Y.columns # This will be used for visualization purpose
     return X, Y, category_names
   
@@ -106,7 +104,7 @@ def build_model():
     
     
     # Create grid search object
-    cv = GridSearchCV(pipeline, param_grid = parameters, scoring = 'f1_micro', verbose = 10)
+    cv = GridSearchCV(pipeline, param_grid = parameters, scoring = 'f1_micro', verbose = 10, n_jobs=-1)
     return cv  
   
   
@@ -127,7 +125,7 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
     Y_prediction_test = model.predict(X_test)
 
-    print(classification_report(Y_test.values, Y_prediction_test, target_names=Y.columns.values))
+    print(classification_report(Y_test.values, Y_prediction_test, target_names=Y_test.columns.values))
     
 def save_model(pipeline, model_filepath):
     """
