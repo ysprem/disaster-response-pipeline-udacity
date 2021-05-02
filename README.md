@@ -36,3 +36,13 @@ Go to http://0.0.0.0:3001/
 
 ### Screenshots
 
+![visualization1](https://user-images.githubusercontent.com/10462415/116804179-9636e980-aad1-11eb-893e-4c07819ab95b.png)
+
+![visualization2](https://user-images.githubusercontent.com/10462415/116804271-5d4b4480-aad2-11eb-95a5-3b5874c86df1.png)
+
+![Screen Shot 2021-05-01 at 11 11 43 PM](https://user-images.githubusercontent.com/10462415/116804344-db0f5000-aad2-11eb-8f86-d7bc7c4dd90c.png)
+
+### Acknowledgements
+
+- Udacity for providing an amazing Data Science Nanodegree Program
+- Figure Eight for providing the relevant dataset to train the model
