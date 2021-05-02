@@ -1,5 +1,7 @@
+import numpy as np
 import pandas as pd
 import os
+import sys
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
@@ -21,6 +23,8 @@ def load_data(messages_filepath, categories_filepath):
     
     # Merge datasets
     df = messages.merge(categories, how = 'left', on = ['id'])
+    
+    return df
     
     
 def transform_data(df):
@@ -81,7 +85,7 @@ def save_data_to_db(df, database_filename):
     None
     """    
     engine = create_engine('sqlite:///'+ database_filename)
-    table_name = database_filename.replace(".db","") + "_table"
+    table_name = os.path.database_filename.replace(".db","") + "_table"
     df.to_sql(table_name, engine, index=False, if_exists='replace')
     
 def main():
@@ -91,9 +95,6 @@ def main():
         2) Clean Categories Data
         3) Save Data to SQLite Database
     """
-    
-    # Print the system arguments
-    # print(sys.argv)
     
     # Execute the ETL pipeline if the count of arguments is matching to 4
     if len(sys.argv) == 4:
