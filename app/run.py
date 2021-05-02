@@ -2,6 +2,8 @@
 import json
 import plotly
 import pandas as pd
+import os
+import sys
 
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
@@ -14,15 +16,18 @@ from sqlalchemy import create_engine
 
 app = Flask(__name__)
 
-@app.route('/')
-@app.route('/index')
 
 # load data
-engine = create_engine('sqlite:///../data/disaster_response_db.db')
-df = pd.read_sql_table('df', engine)
+engine = create_engine('sqlite:///../data/DisasterResponse.db')
+table_name = os.path.basename("DisasterResponse.db").replace(".db","") + "_table"
+df = pd.read_sql_table(table_name, engine)
 
 # load model
 model = joblib.load("../models/classifier.pkl")
+
+
+@app.route('/')
+@app.route('/index')
 
 def index():
     
