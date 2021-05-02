@@ -123,7 +123,10 @@ def evaluate_model(model, X_test, Y_test, category_names):
     # Predict labels for test dataset
     Y_prediction_test = model.predict(X_test)
 
-    print(classification_report(Y_test.values, Y_prediction_test, target_names=Y_test.columns.values))
+    Y_pred = pd.DataFrame(Y_prediction_test, columns = Y_test.columns)
+    for column in Y_test.columns:
+        print('Model Performance with Category: {}'.format(column))
+        print(classification_report(Y_test[column],Y_pred[column]))
     
 def save_model(pipeline, model_filepath):
     """
